@@ -1,0 +1,14 @@
+---
+# Install system apt packages
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update and upgrade apt packages
+      apt:
+        update_cache: yes
+    - name: install packages
+        apt: name={{item}} state=installed
+        with_items:
+        - python3-pip
+        - python3-dev
+        - nginx
